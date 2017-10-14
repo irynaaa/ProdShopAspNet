@@ -76,7 +76,7 @@ namespace WebSite.Controllers
         {
             var model = _productProvider.EditCategory(id);
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]
