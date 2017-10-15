@@ -50,12 +50,13 @@ namespace DAL.Concreate
 
         public IQueryable<Category> GettAllCategories(bool published = true)
         {
-            return this._context.Set<Category>();
+            return this._context.Set<Category>()
+                .Where(c=>c.Published || c.Published==published);
         }
 
         public Category Details(int id)
         {
-            return _context.Set<Category>().Single(x => x.Id == id);
+            return _context.Set<Category>().SingleOrDefault(x => x.Id == id);
         }
         public Category Edit(int id)
         {

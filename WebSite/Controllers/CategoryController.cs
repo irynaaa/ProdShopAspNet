@@ -32,6 +32,16 @@ namespace WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(AddCategoryProdViewModel category)
         {
+            //doesn't work???
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new AddCategoryProdViewModel
+                {
+                    Name = category.Name,
+                    Published = category.Published
+                };
+                return View("Add", viewModel);
+              }
             _productProvider.AddCategory(category);
             return RedirectToAction("Index");
         }
@@ -46,32 +56,19 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Remove(CategoryItemProdViewModel model)
         {
-            //try
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        _productProvider.RemoveCategory(model);
-            //        return RedirectToAction("Index");
-            //    }
-            //    return View(model);
-            //}
-            //catch (Exception)
-            //{
-            //    return View();
-            //}
             _productProvider.RemoveCategory(model);
             return RedirectToAction("Index");
-
         }
 
-
+       
         public ActionResult Details(int id)
         {
             var model = _productProvider.GetCategoryDetails(id);
+            if (model==null) return HttpNotFound();
             return View(model);
         }
         
-       // [HttpGet]
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var model = _productProvider.EditCategory(id);

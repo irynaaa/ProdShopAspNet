@@ -12,8 +12,11 @@ namespace DAL.Entities
     {
         [Key]
         public int Id { get; set; }
+
         [Required,StringLength(maximumLength:255)]
         public string Name { get; set; }
+
+        [Display(Name="Is it published?")]
         public bool Published { get; set; }
     }
 }

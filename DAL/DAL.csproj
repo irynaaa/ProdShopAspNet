@@ -66,14 +66,25 @@
   <ItemGroup>
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\IEFContext.cs" />
+    <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Concreate\CategoryRepository.cs" />
+    <Compile Include="Concreate\ProductRepository.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
     <Compile Include="Entities\EFContext.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Migrations\201710131624306_Create db and table Categories.cs" />
     <Compile Include="Migrations\201710131624306_Create db and table Categories.Designer.cs">
       <DependentUpon>201710131624306_Create db and table Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150900129_add Product entity.cs" />
+    <Compile Include="Migrations\201710150900129_add Product entity.Designer.cs">
+      <DependentUpon>201710150900129_add Product entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150910039_Update Product.cs" />
+    <Compile Include="Migrations\201710150910039_Update Product.Designer.cs">
+      <DependentUpon>201710150910039_Update Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +119,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710131624306_Create db and table Categories.resx">
       <DependentUpon>201710131624306_Create db and table Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150900129_add Product entity.resx">
+      <DependentUpon>201710150900129_add Product entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150910039_Update Product.resx">
+      <DependentUpon>201710150910039_Update Product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

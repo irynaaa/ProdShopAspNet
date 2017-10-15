@@ -22,6 +22,8 @@ namespace DAL.Entities
         }
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
         public EntityState Modified<TEntity>(TEntity entity) where TEntity : class
         {
             base.Entry(entity).State = EntityState.Modified;
@@ -39,6 +41,8 @@ namespace DAL.Entities
             return base.Set<TEntity>();
         }
 
-       // public System.Data.Entity.DbSet<BLL.ViewModels.CategoryItemProdViewModel> CategoryItemProdViewModels { get; set; }
+        //public System.Data.Entity.DbSet<BLL.ViewModels.AddProductViewModel> AddProductViewModels { get; set; }
+
+        // public System.Data.Entity.DbSet<BLL.ViewModels.CategoryItemProdViewModel> CategoryItemProdViewModels { get; set; }
     }
 }

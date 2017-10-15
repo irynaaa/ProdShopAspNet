@@ -14,10 +14,12 @@ namespace BLL.Concreate
     class ProductProvider : IProductProvider
     {
         ICategoryRepository _categoryRepository;
+        IProductRepository _productRepository;
 
-        public ProductProvider(ICategoryRepository categoryRepository)
+        public ProductProvider(ICategoryRepository categoryRepository, IProductRepository productRepository)
         {
             _categoryRepository = categoryRepository;
+            _productRepository = productRepository;
         }
         public int AddCategory(AddCategoryProdViewModel addCategory)
         {
@@ -74,21 +76,62 @@ namespace BLL.Concreate
 
         public IEnumerable<CategoryItemProdViewModel> GetCategories()
         {
-            var model=_categoryRepository.GettAllCategories()
+            var model=_categoryRepository.GettAllCategories(false)
                 .Select(c=> new CategoryItemProdViewModel
                 { Id=c.Id,
                     Name =c.Name,
                     Published =c.Published});
             return model.AsEnumerable();
         }
+        public IEnumerable<CategoryItemProdViewModel> GetProducts()
+        {
+            var model = _productRepository.GettAllProducts()
+                .Select(c => new CategoryItemProdViewModel
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                    
+                });
+            return model.AsEnumerable();
+        }
 
-      public  CategoryItemProdViewModel GetCategoryDetails(int id)
+        public  CategoryItemProdViewModel GetCategoryDetails(int id)
         {
             var model_ = new CategoryItemProdViewModel();
             model_.Id = _categoryRepository.Details(id).Id;
             model_.Name = _categoryRepository.Details(id).Name;
             model_.Published = _categoryRepository.Details(id).Published;
             return model_;
+        }
+
+        public int AddProduct(AddProductViewModel addProduct)
+        {
+           Product product = new Product
+            {
+                Name = addProduct.Name,
+               Description=addProduct.Description,
+               CreateDate=addProduct.CreateDate,
+               ModefiedDate=addProduct.ModefiedDate,
+               CategoryId=addProduct.Id
+           };
+            _productRepository.Add(product);
+            _productRepository.SaveChanges();
+
+            return product.Id;
+        }
+
+        public IEnumerable<SelectItemViewModel> GetSelectCategories()
+        {
+            return _categoryRepository.GettAllCategories()
+                .Select(c=>new SelectItemViewModel {
+                    Id=c.Id,
+                    Name=c.Name
+                });
+        }
+
+        IEnumerable<AddProductViewModel> IProductProvider.GetProducts()
+        {
+            throw new NotImplementedException();
         }
     }
 }

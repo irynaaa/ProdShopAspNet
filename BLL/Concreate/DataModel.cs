@@ -22,10 +22,16 @@ namespace BLL.Concreate
         {
             builder.Register(c => new EFContext(this._connStr))
                 .As<IEFContext>().InstancePerRequest();
+
             builder.RegisterType<CategoryRepository>()
                 .As<ICategoryRepository>().InstancePerRequest();
+
+            builder.RegisterType<ProductRepository>()
+                .As<IProductRepository>().InstancePerRequest();
+
             builder.RegisterType<ProductProvider>()
                .As<IProductProvider>().InstancePerRequest();
+
             base.Load(builder);
         }
     }
