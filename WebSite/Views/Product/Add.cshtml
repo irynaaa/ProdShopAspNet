@@ -1,5 +1,11 @@
 ﻿@model BLL.ViewModels.AddProductViewModel
 
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -39,14 +45,18 @@
                 @Html.ValidationMessageFor(model => model.ModefiedDate, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-            </div>
+            @Html.LabelFor(model => model.CategoryId)
+            @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(m => m.Category.Id)*@
         </div>
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.Product.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Product.CategoryId, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

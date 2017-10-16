@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
+using System.Data.Entity;
 
 namespace DAL.Concreate
 {
@@ -31,7 +32,7 @@ namespace DAL.Concreate
 
         public IQueryable<Product> GettAllProducts()
         {
-            return this._context.Set<Product>();
+            return this._context.Set<Product>().Include(c=>c.Category);
         }
 
         //public Product Details(int id)
@@ -66,7 +67,7 @@ namespace DAL.Concreate
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            this._context.SaveChanges();
         }
     }
 }

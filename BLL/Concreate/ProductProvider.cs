@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BLL.ViewModels;
 using DAL.Abstract;
 using DAL.Entities;
+
 using DAL.Concreate;
 
 namespace BLL.Concreate
@@ -83,17 +84,7 @@ namespace BLL.Concreate
                     Published =c.Published});
             return model.AsEnumerable();
         }
-        public IEnumerable<CategoryItemProdViewModel> GetProducts()
-        {
-            var model = _productRepository.GettAllProducts()
-                .Select(c => new CategoryItemProdViewModel
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                    
-                });
-            return model.AsEnumerable();
-        }
+      
 
         public  CategoryItemProdViewModel GetCategoryDetails(int id)
         {
@@ -104,16 +95,22 @@ namespace BLL.Concreate
             return model_;
         }
 
+       
         public int AddProduct(AddProductViewModel addProduct)
         {
-           Product product = new Product
+            var selecteditem =GetSelectCategories();
+            var item = new SelectItemViewModel();
+
+            Product product = new Product
             {
                 Name = addProduct.Name,
-               Description=addProduct.Description,
-               CreateDate=addProduct.CreateDate,
-               ModefiedDate=addProduct.ModefiedDate,
-               CategoryId=addProduct.Id
-           };
+                Description = addProduct.Description,
+                CreateDate = DateTime.Now/*addProduct.CreateDate*/,
+                ModefiedDate = DateTime.Now /*addProduct.ModefiedDate*/,
+                CategoryId = addProduct.CategoryId,
+                Category = addProduct.Category
+            };
+            
             _productRepository.Add(product);
             _productRepository.SaveChanges();
 
@@ -129,9 +126,25 @@ namespace BLL.Concreate
                 });
         }
 
-        IEnumerable<AddProductViewModel> IProductProvider.GetProducts()
+        IEnumerable<ProductViewModel> IProductProvider.GetProducts()
         {
-            throw new NotImplementedException();
+            Product Product = new Product();
+            var model = _productRepository.GettAllProducts()
+                .Select(c => new ProductViewModel
+                {
+                    Id=c.Id,
+                   Name=c.Name,
+                   Description=c.Description,
+                   CreateDate=c.CreateDate,
+                   ModefiedDate=c.ModefiedDate,
+                   CategoryId=c.CategoryId,
+                   Category=c.Category
+
+                });
+            
+            return model.AsEnumerable();
         }
+
+       
     }
 }

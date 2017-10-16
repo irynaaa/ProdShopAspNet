@@ -32,7 +32,6 @@ namespace WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(AddCategoryProdViewModel category)
         {
-            //doesn't work???
             if (!ModelState.IsValid)
             {
                 var viewModel = new AddCategoryProdViewModel

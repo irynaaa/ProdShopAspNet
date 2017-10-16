@@ -15,14 +15,17 @@ namespace DAL.Entities
 
         [Required, StringLength(maximumLength: 255)]
         public string Name { get; set; }
+
         [StringLength(maximumLength: 1000)]
         public string Description { get; set; }
+
         public DateTime CreateDate { get; set; }
+
         public DateTime ModefiedDate { get; set; }
-        //public int Quantity { get; set; }
-        //[Display(Name = "Is it published?")]
+
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
+
         public Category Category { get; set; }
     }
 }

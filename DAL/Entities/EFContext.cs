@@ -41,8 +41,6 @@ namespace DAL.Entities
             return base.Set<TEntity>();
         }
 
-        //public System.Data.Entity.DbSet<BLL.ViewModels.AddProductViewModel> AddProductViewModels { get; set; }
-
-        // public System.Data.Entity.DbSet<BLL.ViewModels.CategoryItemProdViewModel> CategoryItemProdViewModels { get; set; }
+       // public System.Data.Entity.DbSet<BLL.ViewModels.ProductViewModel> ProductViewModels { get; set; }
     }
 }

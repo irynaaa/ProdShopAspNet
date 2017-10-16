@@ -60,7 +60,7 @@ namespace DAL.Concreate
         }
         public Category Edit(int id)
         {
-            return _context.Set<Category>().Single(x => x.Id == id);
+            return _context.Set<Category>().SingleOrDefault(x => x.Id == id);
         }
 
         public Category Edit(Category category)

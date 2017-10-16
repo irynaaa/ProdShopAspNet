@@ -13,6 +13,7 @@ namespace DAL.Entities
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Name of category")]
         [Required,StringLength(maximumLength:255)]
         public string Name { get; set; }
 

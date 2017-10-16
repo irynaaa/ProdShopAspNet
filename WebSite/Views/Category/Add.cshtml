@@ -19,7 +19,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                @*Doesn't work???*@
                 @Html.ValidationMessageFor(model => model.Name)
             </div>
         </div>

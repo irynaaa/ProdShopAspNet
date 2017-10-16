@@ -12,20 +12,56 @@ namespace BLL.ViewModels
 {
     public class AddProductViewModel
     {
+        public IEnumerable<SelectItemViewModel> Categories { get; set; }
         public int Id { get; set; }
 
+        [Display(Name = "Name of product")]
         [Required, StringLength(maximumLength: 255)]
         public string Name { get; set; }
 
         [StringLength(maximumLength: 1000)]
         public string Description { get; set; }
 
+        [Display(Name = "Created:")]
         public DateTime CreateDate { get; set; }
 
+        [Display(Name = "Modefied:")]
         public DateTime ModefiedDate { get; set; }
+
+        [Display(Name = "Name of category")]
+        public int CategoryId { get; set; }
+
+        
+        public Category Category { get; set; }
+        //public Product Product { get; set; }
+
+        //public IEnumerable<SelectItemViewModel> Categories { get; set; }
+
+    }
+
+    public class ProductViewModel
+    {
+        public int Id { get; set; }
+
+        [Display(Name = "Name of product")]
+        [Required, StringLength(maximumLength: 255)]
+        public string Name { get; set; }
+
+        [StringLength(maximumLength: 1000)]
+        public string Description { get; set; }
+
+        [Display(Name = "Created:")]
+        public DateTime CreateDate { get; set; }
+
+        [Display(Name = "Modefied:")]
+        public DateTime ModefiedDate { get; set; }
+
         
         public int CategoryId { get; set; }
-        public IEnumerable<SelectItemViewModel> Categories { get; set; }
+
+       
+        public Category Category { get; set; }
+
 
     }
 
@@ -40,7 +76,7 @@ namespace BLL.ViewModels
     public class CategoryItemProdViewModel
     {
         public int Id { get; set; }
-        [Display(Name = "Name of category")]
+
         [Required(ErrorMessage = "Name is required! Can't be empty!")]
         [StringLength(maximumLength: 255, MinimumLength = 2)]
         public string Name { get; set; }
