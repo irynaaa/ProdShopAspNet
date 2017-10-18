@@ -19,5 +19,8 @@ namespace BLL.Abstract
         IEnumerable<CategoryItemProdViewModel> GetCategories();
         IEnumerable<ProductViewModel> GetProducts();
         CategoryItemProdViewModel GetCategoryDetails(int id);
+
+        void Delete(int id);
+        ProductViewModel GetProductInfo(int id);
     }
 }

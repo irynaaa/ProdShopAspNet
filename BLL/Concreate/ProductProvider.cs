@@ -145,6 +145,28 @@ namespace BLL.Concreate
             return model.AsEnumerable();
         }
 
-       
+        public void Delete(int id)
+        {
+            _productRepository.Delete(id);
+        }
+
+        public ProductViewModel GetProductInfo(int id)
+        {
+            ProductViewModel model = null;
+            var prod = _productRepository.GetProductById(id);
+            if (prod != null)
+            {
+                model = new ProductViewModel
+                {
+                    Id = prod.Id,
+                    Name = prod.Name,
+                    Description=prod.Description,
+                    CreateDate=prod.CreateDate,
+                    ModefiedDate=prod.ModefiedDate,
+                    Category=prod.Category
+                };
+            }
+            return model;
+        }
     }
 }

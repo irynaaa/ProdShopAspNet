@@ -19,7 +19,7 @@ namespace BLL.ViewModels
         [Required, StringLength(maximumLength: 255)]
         public string Name { get; set; }
 
-        [StringLength(maximumLength: 1000)]
+        [Required, StringLength(maximumLength: 1000)]
         public string Description { get; set; }
 
         [Display(Name = "Created:")]
@@ -28,14 +28,11 @@ namespace BLL.ViewModels
         [Display(Name = "Modefied:")]
         public DateTime ModefiedDate { get; set; }
 
+        [Required(ErrorMessage = "Chose category!")]
         [Display(Name = "Name of category")]
         public int CategoryId { get; set; }
 
-        
         public Category Category { get; set; }
-        //public Product Product { get; set; }
-
-        //public IEnumerable<SelectItemViewModel> Categories { get; set; }
 
     }
 
@@ -56,10 +53,8 @@ namespace BLL.ViewModels
         [Display(Name = "Modefied:")]
         public DateTime ModefiedDate { get; set; }
 
-        
         public int CategoryId { get; set; }
 
-       
         public Category Category { get; set; }
 
 

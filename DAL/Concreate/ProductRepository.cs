@@ -35,6 +35,22 @@ namespace DAL.Concreate
             return this._context.Set<Product>().Include(c=>c.Category);
         }
 
+        public void Delete(int id)
+        {
+            var product = this.GetProductById(id);
+            if (product != null)
+            {
+                _context.Set<Product>().Remove(product);
+                this.SaveChanges();
+            }
+        }
+
+        public Product GetProductById(int id)
+        {
+            return this.GettAllProducts()
+                .SingleOrDefault(c => c.Id == id);
+        }
+
         //public Product Details(int id)
         //{
         //    throw new NotImplementedException();

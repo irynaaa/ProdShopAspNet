@@ -20,5 +20,10 @@ namespace DAL.Abstract
         IQueryable<Product> GettAllProducts();
 
         void SaveChanges();
+        void Delete(int id);
+        Product GetProductById(int id);
+
+
+
     }
 }
