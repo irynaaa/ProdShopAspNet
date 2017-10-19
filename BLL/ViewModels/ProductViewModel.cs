@@ -84,6 +84,10 @@ namespace BLL.ViewModels
         public Category Category { get; set; }
 
 
+        /////////
+        public IEnumerable<SelectItemViewModel> Categories { get; set; }
+
+
     }
 
     public  class AddCategoryProdViewModel
