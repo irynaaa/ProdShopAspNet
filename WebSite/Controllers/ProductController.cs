@@ -93,5 +93,33 @@ namespace WebSite.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model = _productProvider.EditProduct(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditProductViewModel editProd)
+        {
+            IEnumerable<SelectItemViewModel> categoriesList = new List<SelectItemViewModel>();
+            categoriesList = _productProvider.GetSelectCategories();
+            editProd.Categories = categoriesList;
+            if (ModelState.IsValid)
+            {
+                int result = _productProvider.EditProduct(editProd);
+
+                if (result == 0)
+                {
+                    ModelState.AddModelError("", "Помилка збереження даних!");
+                }
+                else if (result != 0)
+                    return RedirectToAction("Index");
+            }
+            return View(editProd);
+        }
+
     }
 }

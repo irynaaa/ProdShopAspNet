@@ -36,6 +36,32 @@ namespace BLL.ViewModels
 
     }
 
+    public class EditProductViewModel
+    {
+        public IEnumerable<SelectItemViewModel> Categories { get; set; }
+        public int Id { get; set; }
+
+        [Display(Name = "Name of product")]
+        [Required, StringLength(maximumLength: 255)]
+        public string Name { get; set; }
+
+        [Required, StringLength(maximumLength: 1000)]
+        public string Description { get; set; }
+
+        [Display(Name = "Created:")]
+        public DateTime CreateDate { get; set; }
+
+        [Display(Name = "Modefied:")]
+        public DateTime ModefiedDate { get; set; }
+
+        [Required(ErrorMessage = "Chose category!")]
+        [Display(Name = "Name of category")]
+        public int CategoryId { get; set; }
+
+        public Category Category { get; set; }
+
+    }
+
     public class ProductViewModel
     {
         public int Id { get; set; }

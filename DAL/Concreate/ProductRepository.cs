@@ -51,35 +51,7 @@ namespace DAL.Concreate
                 .SingleOrDefault(c => c.Id == id);
         }
 
-        //public Product Details(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Product Edit(Category product)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Product Edit(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public IQueryable<Product> GettAllProducts(bool published = true)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void Remove(Category product)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Product Remove(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
 
         public void SaveChanges()
         {

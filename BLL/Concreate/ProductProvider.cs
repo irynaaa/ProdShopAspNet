@@ -105,8 +105,8 @@ namespace BLL.Concreate
             {
                 Name = addProduct.Name,
                 Description = addProduct.Description,
-                CreateDate = DateTime.Now/*addProduct.CreateDate*/,
-                ModefiedDate = DateTime.Now /*addProduct.ModefiedDate*/,
+                CreateDate = DateTime.Now,
+                ModefiedDate = DateTime.Now,
                 CategoryId = addProduct.CategoryId,
                 Category = addProduct.Category
             };
@@ -167,6 +167,53 @@ namespace BLL.Concreate
                 };
             }
             return model;
+        }
+
+        public EditProductViewModel EditProduct(int id)
+        {
+            EditProductViewModel model = null;
+
+            var product = _productRepository.GetProductById(id);
+            IEnumerable<SelectItemViewModel> categoriesList = new List<SelectItemViewModel>();
+            categoriesList = GetSelectCategories();
+            if (product != null)
+            {
+                model = new EditProductViewModel
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description= product.Description,
+                    CreateDate=product.CreateDate,
+                    ModefiedDate=DateTime.Now,
+                    Categories=categoriesList,
+                    CategoryId = product.CategoryId,
+                    Category = product.Category
+            };
+            }
+            return model;
+        }
+
+        public int EditProduct(EditProductViewModel editProd)
+        {
+            try
+            {
+                var product =
+                    _productRepository.GetProductById(editProd.Id);
+                if (product != null)
+                {
+                    product.Name = editProd.Name;
+                    product.Description = editProd.Description;
+                    product.CreateDate = editProd.CreateDate;
+                    product.ModefiedDate = editProd.ModefiedDate;
+                    product.CategoryId = editProd.CategoryId;
+                    _productRepository.SaveChanges();
+                }
+            }
+            catch
+            {
+             return 0;
+            }
+            return editProd.Id;
         }
     }
 }

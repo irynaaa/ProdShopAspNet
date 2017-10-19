@@ -22,5 +22,7 @@ namespace BLL.Abstract
 
         void Delete(int id);
         ProductViewModel GetProductInfo(int id);
+        EditProductViewModel EditProduct(int id);
+        int EditProduct(EditProductViewModel editCategory);
     }
 }
