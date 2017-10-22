@@ -67,13 +67,17 @@
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\IEFContext.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Abstract\IUserRepositoriy.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Concreate\CategoryRepository.cs" />
     <Compile Include="Concreate\ProductRepository.cs" />
+    <Compile Include="Concreate\UserRepositoriy.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
     <Compile Include="Entities\EFContext.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201710131624306_Create db and table Categories.cs" />
     <Compile Include="Migrations\201710131624306_Create db and table Categories.Designer.cs">
       <DependentUpon>201710131624306_Create db and table Categories.cs</DependentUpon>
@@ -85,6 +89,10 @@
     <Compile Include="Migrations\201710150910039_Update Product.cs" />
     <Compile Include="Migrations\201710150910039_Update Product.Designer.cs">
       <DependentUpon>201710150910039_Update Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710220624499_Add Roles and Users.cs" />
+    <Compile Include="Migrations\201710220624499_Add Roles and Users.Designer.cs">
+      <DependentUpon>201710220624499_Add Roles and Users.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710150910039_Update Product.resx">
       <DependentUpon>201710150910039_Update Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710220624499_Add Roles and Users.resx">
+      <DependentUpon>201710220624499_Add Roles and Users.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

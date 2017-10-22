@@ -1,6 +1,5 @@
 ﻿using BLL.Abstract;
 using BLL.ViewModels;
-using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,7 @@ using System.Web.Mvc;
 
 namespace WebSite.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly IProductProvider _productProvider;
@@ -17,7 +17,7 @@ namespace WebSite.Controllers
             _productProvider = productProvider;
         }
         // GET: Category
-
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var model = _productProvider.GetCategories();
@@ -44,7 +44,7 @@ namespace WebSite.Controllers
             _productProvider.AddCategory(category);
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult Remove(int id)
         {
             var model = _productProvider.RemoveCategory(id);
@@ -52,6 +52,7 @@ namespace WebSite.Controllers
             return View(model);
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         public ActionResult Remove(CategoryItemProdViewModel model)
         {

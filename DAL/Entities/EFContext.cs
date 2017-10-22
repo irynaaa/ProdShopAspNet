@@ -24,6 +24,10 @@ namespace DAL.Entities
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
+
         public EntityState Modified<TEntity>(TEntity entity) where TEntity : class
         {
             base.Entry(entity).State = EntityState.Modified;

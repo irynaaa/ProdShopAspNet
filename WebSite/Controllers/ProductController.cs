@@ -1,6 +1,5 @@
 ﻿using BLL.Abstract;
 using BLL.ViewModels;
-using DAL.Entities;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -79,7 +78,7 @@ namespace WebSite.Controllers
                     CreateDate = product.CreateDate,
                     ModefiedDate = product.ModefiedDate,
                     CategoryId = product.CategoryId,
-                    Category = product.Category,
+                   // Category = product.Category,
                     Categories= categoriesList
 
                 };
