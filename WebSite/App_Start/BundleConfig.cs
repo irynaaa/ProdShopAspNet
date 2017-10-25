@@ -20,12 +20,26 @@ namespace WebSite
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                 "~/AdminContent/bower_components/jquery/dist/jquery.min.js",
+                 "~/AdminContent/bower_components/bootstrap/dist/js/bootstrap.min.js",
+                       "~/AdminContent/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
+                        "~/AdminContent/bower_components/fastclick/lib/fastclick.js",
+                         "~/AdminContent/dist/js/adminlte.min.js",
+                          "~/AdminContent/dist/js/demo.js",
+                           "~/Scripts/bootstrap.js",
+                           "~/Scripts/respond.js")
+                      );
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      //"~/Content/bootstrap-lumen.css",
+                      "~/AdminContent/bower_components/bootstrap/dist/css/bootstrap.min.css",
+                      "~/AdminContent/bower_components/font-awesome/css/font-awesome.min.css",
+                      "~/AdminContent/bower_components/Ionicons/css/ionicons.min.css",
+                      "~/AdminContent/dist/css/AdminLTE.min.css",
+                      "~/AdminContent/dist/css/skins/_all-skins.min.css",
                       "~/Content/Site.css"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

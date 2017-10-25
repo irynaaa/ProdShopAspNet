@@ -53,6 +53,7 @@ namespace BLL.Concreate
                 newUser.Password = crypto.Compute(model.Password);
                 newUser.PasswordSalt = crypto.Salt;
                 _UserRepository.Add(newUser);
+               // newUser.Roles.Add(new Role());
                 _UserRepository.SaveChange();
             }
             catch

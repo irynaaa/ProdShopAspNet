@@ -70,9 +70,37 @@ namespace WebSite.Controllers
             return Content(json, "application/json");
         }
         #endregion
-    
 
-    [HttpGet]
+        #region AJAX
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ContentResult RegisterPopup(RegisterViewModel model)
+        {
+            string json = ""; int rez = 0; string message = "";
+            message = "Подумай ще!";
+            if (ModelState.IsValid)
+            {
+                var status = _accountProvider.Register(model);
+                if (status == StatusAccountViewModel.Succes)
+                {
+                    rez = 1;
+                }
+                else
+                {
+                    message = "Не тупи!";
+                    rez = 2;
+                }
+            }
+            json = JsonConvert.SerializeObject(new
+            {
+                rez = rez,
+                message = message
+            });
+            return Content(json, "application/json");
+        }
+        #endregion
+
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
