@@ -1,7 +1,8 @@
 ﻿@model BLL.ViewModels.LoginViewModel
 
 @{
-    ViewBag.Title = "Login to site";
+    ViewBag.Title = "Login as admin";
+    Layout = "~/Areas/Admin/Views/Shared/_MainView.cshtml";
 }
 
 <h2>Login</h2>
@@ -11,8 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4> 
-        @Html.ActionLink("Create Profile ","Register","Account")</h4>
+        @*<h4>Admin Panel</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

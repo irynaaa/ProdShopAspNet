@@ -9,9 +9,10 @@ namespace WebSite.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         // GET: Admin/Home
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            return View();
+            return View(/*"Index", "Home"/*, new { area = "Admin" }*/);
         }
     }
 }

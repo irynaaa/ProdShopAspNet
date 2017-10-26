@@ -53,7 +53,6 @@ namespace BLL.Concreate
                 newUser.Password = crypto.Compute(model.Password);
                 newUser.PasswordSalt = crypto.Salt;
                 _UserRepository.Add(newUser);
-               // newUser.Roles.Add(new Role());
                 _UserRepository.SaveChange();
             }
             catch
@@ -69,6 +68,16 @@ namespace BLL.Concreate
             //lazy load, select can use because Virtual Roles 
             return user.Roles.Select(r => r.Name);
         }
+
+        //public IEnumerable<RoleViewModel> Roles()
+        //{
+        //    var roles = _UserRepository.GetRoles();
+        //    List<RoleViewModel> _roles = new List<RoleViewModel>();
+        //    foreach (var r in roles)
+        //        _roles.Add(new RoleViewModel(r.Id,r.Name));
+        //    //lazy load, select can use because Virtual Roles 
+        //    return _roles;
+        //}
     }
 }
 

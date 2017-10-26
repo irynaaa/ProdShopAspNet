@@ -19,12 +19,14 @@
 
         <header class="main-header">
             <!-- Logo -->
-            @Html.ActionLink("Admin Panel", "Index","Home", new { area = "Admin" },new { @class = "logo-mini logo-lg", @style = "Font-size:24px; padding-left: 20px; font-weight: bold" })
-            @Html.ActionLink("|Site", "Index", "Home", new { area="" }, new { @class = "logo-mini logo-lg", @style = "Font-size:24px; font-weight: bold" })
-                <!-- mini logo for sidebar mini 50x50 pixels -->
+            @Html.ActionLink("Admin Panel", "Index","Home", new { area = "Admin" },new { @class = "logo-mini logo-lg", @style = "Font-size:18px; padding-left: 20px; font-weight: bold" })
+            @Html.ActionLink("|Site", "Index", "Home", new { area="" }, new { @class = "logo-mini logo-lg", @style = "Font-size:18px; font-weight: bold" })
+            @Html.ActionLink("|Logout", "Logout", "Login", new { area = "Admin" }, new { @class = "logo-mini logo-lg", @style = "Font-size:18px; font-weight: bold; text-align: right;" })
+            <!-- mini logo for sidebar mini 50x50 pixels -->
 
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
+               
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -201,6 +203,20 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
+                    <!-- my categories at admin panel -->
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-smile-o"></i> <span>Shop</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink(" Categories ", "Index", "Category",new { @area="Admin"}, new { @class= "fa fa-circle-o" })<i class=""></i></li>
+                            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Products</a></li>
+                        </ul>
+                    </li>
+                    <!-- my categories at admin panel -->
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>

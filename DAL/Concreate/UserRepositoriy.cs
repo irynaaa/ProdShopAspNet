@@ -44,6 +44,11 @@ namespace DAL.Concreate
                 .SingleOrDefault(c => c.Email == email);
         }
 
+        //public IQueryable<Role> GetRoles()
+        //{
+        //    return this._context.Set<Role>();
+        //}
+
         public void SaveChange()
         {
             this._context.SaveChanges();

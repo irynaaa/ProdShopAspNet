@@ -1,0 +1,18 @@
+﻿@model IEnumerable<BLL.ViewModels.CategoryItemProdViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainView.cshtml";
+}
+
+<h2>Categories list</h2>
+
+<ul>
+    @foreach (var item in Model)
+            {
+        <li>@Html.ActionLink(item.Name, "Details", new { @id = item.Id })</li>
+    }
+</ul>
+
+@Html.ActionLink("Create", "Add", "Category")
+@*@Html.ActionLink("Edite", "Edite", "Category")*@
+

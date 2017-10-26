@@ -44,4 +44,18 @@ namespace BLL.ViewModels
         public string ConfirmPassword { get; set; }
 
     }
+
+    public class RoleViewModel
+    {
+        public RoleViewModel(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        [Key]
+        public int Id { get; set; }
+        [Required, StringLength(maximumLength: 255)]
+        public string Name { get; set; }
+    }
 }

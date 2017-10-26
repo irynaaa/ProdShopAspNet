@@ -1,4 +1,5 @@
 ﻿using BLL.ViewModels;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace BLL.Abstract
         StatusAccountViewModel Register(RegisterViewModel model);
         StatusAccountViewModel Login(LoginViewModel model);
         IEnumerable<string> UserRoles(string email);
+        //IEnumerable<RoleViewModel> Roles();
         void Logout();
     }
 }

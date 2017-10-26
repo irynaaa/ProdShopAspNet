@@ -34,7 +34,7 @@ namespace WebSite.Controllers
                 var status = _accountProvider.Login(model);
                 if (status == StatusAccountViewModel.Succes)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home"/*, new { area = "Admin" }*/);
                 }
                 else
                     ModelState.AddModelError("", "Data input error. User not found!");
@@ -48,7 +48,7 @@ namespace WebSite.Controllers
         public ContentResult LoginPopup(LoginViewModel model)
         {
             string json = ""; int rez = 0; string message = "";
-            message = "Подумай ще!";
+           // message = "Подумай ще!";
             if (ModelState.IsValid)
             {
                 var status = _accountProvider.Login(model);
@@ -77,7 +77,7 @@ namespace WebSite.Controllers
         public ContentResult RegisterPopup(RegisterViewModel model)
         {
             string json = ""; int rez = 0; string message = "";
-            message = "Подумай ще!";
+            //message = "Подумай ще!";
             if (ModelState.IsValid)
             {
                 var status = _accountProvider.Register(model);
@@ -128,5 +128,11 @@ namespace WebSite.Controllers
             _accountProvider.Logout();
             return RedirectToAction("Index", "Home");
         }
+
+        //[HttpGet]
+        //public ActionResult ShowAllRoles()
+        //{
+        //    return View();
+        //}
     }
 }

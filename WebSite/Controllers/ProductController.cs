@@ -20,6 +20,7 @@ namespace WebSite.Controllers
         }
         // GET: Category
 
+        [Authorize(Roles = "Admin,User")]
         public ActionResult Index(int? page)
         {
             IEnumerable<SelectItemViewModel> categoriesList = new List<SelectItemViewModel>();
@@ -32,6 +33,8 @@ namespace WebSite.Controllers
             int pageNumber = (page ?? 1);
                 return View(_productProvider.GetProducts().OrderBy(i => i.Id).ToPagedList(pageNumber, pageSize));
         }
+
+       
         [HttpPost]
         public ActionResult Index(int? page, int? categoryId)
         {
@@ -48,6 +51,8 @@ namespace WebSite.Controllers
                 return View(_productProvider.GetProducts().OrderBy(i => i.Id).ToPagedList(pageNumber, pageSize));
         }
 
+        [Authorize(Roles = "Admin,SuperUser")]
+       // [ValidateAntiForgeryToken]
         public ActionResult Add()
         {
             IEnumerable<SelectItemViewModel> categoriesList = new List<SelectItemViewModel>();
