@@ -213,7 +213,18 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink(" Categories ", "Index", "Category",new { @area="Admin"}, new { @class= "fa fa-circle-o" })<i class=""></i></li>
-                            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Products</a></li>
+                            <li>@Html.ActionLink(" Products ", "Index", "Product", new { @area = "Admin" }, new { @class = "fa fa-circle-o" })<i class=""></i></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-smile-o"></i> <span>Users</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink(" Users list ", "Index", "User", new { @area = "Admin" }, new { @class = "fa fa-circle-o" })<i class=""></i></li>
                         </ul>
                     </li>
                     <!-- my categories at admin panel -->
@@ -603,6 +614,6 @@
         <div class="control-sidebar-bg"></div>
     </div>
    @Scripts.Render("~/bundles/bootstrap")
-
+    @RenderSection("scripts", required: false)
 </body>
 </html>

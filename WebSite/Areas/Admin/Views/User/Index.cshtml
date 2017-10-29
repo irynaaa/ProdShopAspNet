@@ -1,0 +1,102 @@
+﻿@model IEnumerable<BLL.ViewModels.UserViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainView.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Role.Name)
+        </th>
+        <th></th>
+    </tr>
+    <tbody id="listUsers">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Role.Name)*@
+                    @foreach (var role in item.Roles)
+                    {
+                        <span>
+                            @role.Name
+                        <a href="#" class="delUserRole" data-id="@role.Id" data-user-id="@item.Id">X</a>
+                    </span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+@*@section scripts {
+   <script>
+       $(function () {
+           $("#listUsers").on("click", ".delUserRole", function () {
+               var obj = $(this);
+               var item = {
+                   userId:obj.attr()
+               }
+               console.log(obj.attr("data-id"));
+           });
+       });
+    </script>
+    }*@
+
+
+@section scripts {
+    <script>
+       $(function () {
+           $("#listUsers").on("click", ".delUserRole", function () {
+               var obj = $(this);
+               
+
+               //Дані для відправки на сервер
+               var item = {
+                   userId: obj.attr("data-user-id"),
+                   roleId: obj.attr("data-id")
+               };
+               $.ajax({
+                   //url: "/AdminUser/DeleteUserRole",
+                   url: "/Admin/User/DeleteUserRole",
+                   type: "POST",
+                   data: JSON.stringify(item),
+                   dataType: "json",
+                   contentType: "application/json; charset=utf-8",
+                   success: function (data) {
+                       if (data.rez == 0) {
+                           alert("Error delete role");
+                       }
+                       else {
+                           var span = obj.closest('span');
+                           span.remove();
+                       }
+                       //console.log(data.rez);
+
+                   }
+               });
+              
+           });
+       });
+    </script>
+}

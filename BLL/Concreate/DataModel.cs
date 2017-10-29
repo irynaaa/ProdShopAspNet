@@ -38,6 +38,14 @@ namespace BLL.Concreate
             builder.RegisterType<AccountProvider>()
               .As<IAccountProvider>().InstancePerRequest();
 
+            builder.RegisterType<UserProvider>()
+             .As<IUserProvider>().InstancePerRequest();
+
+            builder.RegisterType<RoleRepository>()
+             .As<IRoleRepository>().InstancePerRequest();
+
+           
+
             base.Load(builder);
         }
     }

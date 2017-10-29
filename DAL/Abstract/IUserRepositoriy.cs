@@ -11,7 +11,8 @@ namespace DAL.Abstract
     {
         User Add(User user);
         IQueryable<User> GetAllUsers();
-        //IQueryable<Role> GetRoles();
+        IQueryable<Role> GetRoles();
+        IQueryable<UserRoles> GetUserRoles();
         User GetUserByEmail(string email);
         User GetUserById(int id);
         void SaveChange();

@@ -12,4 +12,11 @@ namespace BLL.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
     }
+
+    public class SelectRoleViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+       // public int UserId { get; set; }
+    }
 }

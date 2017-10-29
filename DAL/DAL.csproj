@@ -67,10 +67,12 @@
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\IEFContext.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Abstract\IRoleRepository.cs" />
     <Compile Include="Abstract\IUserRepositoriy.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Concreate\CategoryRepository.cs" />
     <Compile Include="Concreate\ProductRepository.cs" />
+    <Compile Include="Concreate\RoleRepository.cs" />
     <Compile Include="Concreate\UserRepositoriy.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserRoles.cs" />
     <Compile Include="Migrations\201710131624306_Create db and table Categories.cs" />
     <Compile Include="Migrations\201710131624306_Create db and table Categories.Designer.cs">
       <DependentUpon>201710131624306_Create db and table Categories.cs</DependentUpon>

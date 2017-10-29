@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -58,4 +59,30 @@ namespace BLL.ViewModels
         [Required, StringLength(maximumLength: 255)]
         public string Name { get; set; }
     }
+
+    public class UserViewModel
+    {
+        public int Id { get; set; }
+
+        [Required, EmailAddress, Display(Name = "Електронна пошта")]
+        public string Email { get; set; }
+
+        public int RoleId { get; set; }
+
+       // [Display(Name = "Role")]
+        public Role Role { get; set; }
+
+
+        /////////
+        public IEnumerable<SelectRoleViewModel> Roles { get; set; }
+    }
+
+
+    public class UserRolesViewModel
+    {
+        public int Id { get; set; }
+        public int User_Id { get; set; }
+        public int Role_Id { get; set; }
+    }
+
 }

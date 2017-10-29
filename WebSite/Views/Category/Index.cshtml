@@ -5,49 +5,10 @@
 }
 
 <h2>Categories list</h2>
-@*<table class="table table-responsive">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Is published
-            </th>
-        </tr>
-    </thead>
-    <tbody>*@
         <ul>
             @foreach (var item in Model)
             {
                 <li>@Html.ActionLink(item.Name, "Details", new { @id = item.Id})</li>
             }
             </ul>
-            @*{
-                    <tr>
-                        <td>
-                            @item.Id
-                        </td>
-
-
-                        <td>
-                            @item.Name
-                        </td>
-
-                        <td>
-                           @item.Published
-
-                        </td>
-
-                    </tr>
-                }
-
-
-        </tbody>
-    </table>*@
-
-@Html.ActionLink("Create","Add","Category")
-@*@Html.ActionLink("Edite", "Edite", "Category")*@
+         

@@ -32,7 +32,7 @@ namespace DAL.Concreate
 
         public IQueryable<Product> GettAllProducts()
         {
-            return this._context.Set<Product>().Include(c=>c.Category);
+            return this._context.Set<Product>()/*.Include(c=>c.Category)*/;
         }
 
         public void Delete(int id)

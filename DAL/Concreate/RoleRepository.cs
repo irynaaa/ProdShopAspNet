@@ -1,25 +1,25 @@
 ﻿using DAL.Abstract;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Entities;
-using System.Data.Entity;
 
 namespace DAL.Concreate
 {
-    public class UserRepository: IUserRepository
+   public class RoleRepository: IRoleRepository
     {
+
         private readonly IEFContext _context;
-        public UserRepository(IEFContext context)
+        public RoleRepository(IEFContext context)
         {
             _context = context;
         }
-        public User Add(User user)
+        public Role Add(Role role)
         {
-            _context.Set<User>().Add(user);
-            return user;
+            _context.Set<Role>().Add(role);
+            return role;
         }
 
         public void Dispose()
@@ -28,22 +28,27 @@ namespace DAL.Concreate
                 this._context.Dispose();
         }
 
-        public IQueryable<User> GetAllUsers()
+        public IQueryable<Role> GetAllRoles()
         {
-            return this._context.Set<User>().Include(c => c.Roles);
+            return this._context.Set<Role>()/*.Include(c => c.Roles)*/;
         }
 
-        public User GetUserById(int id)
+        public Role GetRoleById(int id)
         {
-            return this.GetAllUsers()
-                .SingleOrDefault(c => c.Id == id);
+            return this.GetAllRoles().SingleOrDefault(r => r.Id == id);
         }
 
-        public User GetUserByEmail(string email)
-        {
-            return this.GetAllUsers()
-                .SingleOrDefault(c => c.Email == email);
-        }
+        //public Role GetUserById(int id)
+        //{
+        //    return this.GetAllRoles()
+        //        .SingleOrDefault(c => c.Id == id);
+        //}
+
+        //public User GetUserByEmail(string email)
+        //{
+        //    return this.GetAllRoles()
+        //        .SingleOrDefault(c => c.Email == email);
+        //}
 
         public IQueryable<Role> GetRoles()
         {
@@ -59,5 +64,6 @@ namespace DAL.Concreate
         {
             this._context.SaveChanges();
         }
+
     }
 }
